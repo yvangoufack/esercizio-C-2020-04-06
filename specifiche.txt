@@ -1,1 +1,48 @@
-...
+
+convertire in codice C il seguente programma in Java
+
+tratto da:
+https://algorithms.tutorialhorizon.com/find-the-only-element-in-array-which-appears-only-once/
+
+Find the only element in array which appears only once
+
+Objective: Given an array of integers, all the elements are appear twice but one element which appears only once. Write an algorithm to find that element.
+
+Example:
+
+int [] a = { 1,5,6,2,1,6,4,3,2,5,3};
+output: 4
+
+
+Brute Force:
+
+Use nested loops and compare each element in array with all other elements and track the element which is non-repeated.
+
+Time Complexity: O(n^2)
+
+public class EveryElementsRepeatedButOne {
+
+    public static void findBruteForce(int [] a){
+        boolean [] visited = new boolean[a.length];
+        for (int i = 0; i <a.length ; i++) {
+            int x = a[i];
+            if(visited[i]==false) {
+                boolean isDuplicate = false;
+                for (int j = i + 1; j < a.length; j++) {
+                    if (x == a[j]) {
+                        isDuplicate = true;
+                        visited[j] = true;
+                    }
+                }
+                if (!isDuplicate)
+                    System.out.println("Element appear only once in array - " + x);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int [] a = { 1,5,6,2,1,6,4,3,2,5,3};
+        findBruteForce(a);
+    }
+}
+
